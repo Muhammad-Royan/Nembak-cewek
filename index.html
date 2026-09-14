@@ -51,7 +51,6 @@
             pointer-events: none;
         }
 
-        /* Container Kaca dengan Efek Glow Aurora */
         .container {
             width: 90%;
             max-width: 380px;
@@ -95,7 +94,6 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Ikon SVG Premium & Berpendar */
         .svg-icon {
             width: 85px;
             height: 85px;
@@ -108,7 +106,6 @@
             filter: drop-shadow(0 0 12px rgba(255, 117, 143, 0.6));
         }
 
-        /* Elemen Satelit Berdenyut (LDR Symbol) */
         .pulse-element {
             animation: pulse 2s infinite ease-in-out;
         }
@@ -190,11 +187,11 @@
             transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Efek Gemetar saat Tombol Nggak didekati */
+        /* PERBAIKAN TYPO SCRIPT GERAK GEMENTAR */
         .shake {
-            animation: shake 0.15s linar 2;
+            animation: shakeBtn 0.15s linear 2;
         }
-        @keyframes shake {
+        @keyframes shakeBtn {
             0% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
             75% { transform: translateX(5px); }
@@ -209,13 +206,12 @@
     <div class="container">
         <!-- Halaman 1 -->
         <div class="page active" id="page1">
-            <!-- Ikon Satelit Pemancar Isyarat -->
             <svg class="svg-icon pulse-element" viewBox="0 0 24 24">
-                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" fill="currentColor"/>
-                <path d="M12 2a10 10 0 0 1 10 10" />
-                <path d="M2 12a10 10 0 0 1 10 -10" />
-                <path d="M12 6a6 6 0 0 1 6 6" />
-                <path d="M6 12a6 6 0 0 1 6 -6" />
+                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                <path d="M12 2a10 10 0 0 1 10 10" fill="none"/>
+                <path d="M2 12a10 10 0 0 1 10 -10" fill="none"/>
+                <path d="M12 6a6 6 0 0 1 6 6" fill="none"/>
+                <path d="M6 12a6 6 0 0 1 6 -6" fill="none"/>
             </svg>
             <h2>Hai...</h2>
             <p>Ada sebuah ruang kecil di internet yang sengaja aku siapin malam ini. Cuma buat kamu baca sebentar secara perlahan.</p>
@@ -224,8 +220,7 @@
 
         <!-- Halaman 2 -->
         <div class="page" id="page2">
-            <!-- Ikon Enkripsi/Obrolan Aman -->
-            <svg class="svg-icon" viewBox="0 0 24 24">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none">
                 <rect x="5" y="11" width="14" height="10" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
             </svg>
@@ -236,7 +231,6 @@
 
         <!-- Halaman 3 -->
         <div class="page" id="page3">
-            <!-- Ikon Jantung Menetap/Berkilau -->
             <svg class="svg-icon" viewBox="0 0 24 24" style="stroke: #ff758f; fill: rgba(255,117,143,0.1);">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
@@ -247,10 +241,9 @@
 
         <!-- Halaman 4 -->
         <div class="page" id="page4">
-            <!-- Ikon Kompas Penunjuk Arah -->
-            <svg class="svg-icon" viewBox="0 0 24 24">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="10"/>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"/>
             </svg>
             <h2>Aku ingin menetap di kamu.</h2>
             <p>Aku nggak mau lagi sekadar jadi teman *chatting* LDR-mu. Kamu mau nggak melangkah lebih serius di hubungan ini dan jadi pacarku?</p>
@@ -262,8 +255,7 @@
 
         <!-- Halaman 5 (Sukses) -->
         <div class="page" id="page5">
-            <!-- Ikon Berhasil/Konfirmasi Semesta -->
-            <svg class="svg-icon" viewBox="0 0 24 24" style="stroke:#34d399; filter: drop-shadow(0 0 12px rgba(52,211,153,0.6));">
+            <svg class="svg-icon" viewBox="0 0 24 24" style="stroke:#34d399; filter: drop-shadow(0 0 12px rgba(52,211,153,0.6));" fill="none">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
@@ -273,6 +265,15 @@
     </div>
 
     <script>
-        // --- ⚙️ MASUKKAN DATA TELEGRAM DI SINI ---
+        // --- ⚙️ EDIT DATA TELEGRAM DI SINI ---
         const TELEGRAM_BOT_TOKEN = "MASUKKAN_TOKEN_BOT_KAMU_DISINI";
-      
+        const TELEGRAM_CHAT_ID = "MASUKKAN_CHAT_ID_KAMU_DISINI";
+
+        // Efek Langit Malam Berbintang (Canvas)
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+        
